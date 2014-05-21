@@ -1,0 +1,22 @@
+{
+    "name": "heartbeat",
+    "version": "0.0.1",
+    "description": "Socket.io WebAudioApi Experiment",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/etoxin/heartbeat"
+    },
+    "author": "@etoxin",
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "gitHead": "8bcb09547aa60b190006be6ca14eb81ee1a6b91d",
+    "dependencies": {
+        "socket.io": "~0.9.16",
+        "express": "~4.3.0"
+    }
+}
