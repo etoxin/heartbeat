@@ -8,6 +8,4 @@
 
 ## Run
 
-    DEBUG=myapp node app
-
     npm start
