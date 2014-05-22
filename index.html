@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Heartbeat</title>
+
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost');
+
+        socket.on('heartbeat', function (data) {
+            console.log(data);
+        });
+
+
+
+        var guid = (function() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+            }
+            return function() {
+                return s4() + s4() + s4() + s4();
+            };
+        })();
+
+        console.log(guid());
+    </script>
+</head>
+<body>
+<h1>Heartbeat</h1>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,12 +1,23 @@
-var http = require('http');
-var express = require('express');
-var app = express();
+var app = require('express')()
+    , server = require('http').createServer(app)
+    , io = require('socket.io').listen(server);
 
+server.listen(3000);
 
-app.get('/', function(req, res){
-    res.send('Hello World');
+app.get('/', function (req, res) {
+    res.sendfile(__dirname + '/index.html');
 });
 
-var server = app.listen(3000, function() {
-    console.log('Listening on port %d', server.address().port);
+// we create the base template for the heartbeat
+var heart = [
+    {nid: 1, uid: 'Vacancy'},
+    {nid: 2, uid: 'Vacancy'},
+    {nid: 3, uid: 'Vacancy'},
+    {nid: 4, uid: 'Vacancy'}
+];
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('heartbeat', heart);
 });
+
+

@@ -9,3 +9,7 @@
 ## Run
 
     npm start
+
+## Watch
+
+    supervisor index.js
