@@ -18,21 +18,56 @@
         });
 
 
-
-        var guid = (function() {
+        var guid = (function () {
             function s4() {
                 return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
             }
-            return function() {
+
+            return function () {
                 return s4() + s4() + s4() + s4();
             };
         })();
 
         console.log(guid());
     </script>
+    <style>
+        .title{
+            color:#8A0707;
+            font-size: 1.3em;
+        }
+    </style>
 </head>
 <body>
-<h1>Heartbeat</h1>
+<div class="container">
+    <h1><span class="title">&#x2665;</span>Heartbeat</h1>
+
+    <h2>Oscillator Type</h2>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">Sine</button>
+        <button type="button" class="btn btn-default">Square</button>
+        <button type="button" class="btn btn-default">Sawtooth</button>
+        <button type="button" class="btn btn-default">Triangle</button>
+    </div>
+
+    <h2>Frequency</h2>
+    <div class="input-group input-group-lg">
+        <input type="number" class="form-control">
+        <span class="input-group-addon">hertz</span>
+    </div>
+
+    <h2>Notes</h2>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">C</button>
+        <button type="button" class="btn btn-default">D</button>
+        <button type="button" class="btn btn-default">E</button>
+        <button type="button" class="btn btn-default">F</button>
+        <button type="button" class="btn btn-default">G</button>
+        <button type="button" class="btn btn-default">A</button>
+        <button type="button" class="btn btn-default">B</button>
+    </div>
+
+</div>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

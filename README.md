@@ -10,6 +10,6 @@
 
     npm start
 
-## Watch
+## Watch and restart.
 
     supervisor index.js
