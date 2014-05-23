@@ -1,6 +1,17 @@
-var app = require('express')()
-    , server = require('http').createServer(app)
-    , io = require('socket.io').listen(server);
+var express = require('express');
+var app = express();
+//var app = require('express')(),
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
+
+//app.use('/', app.static(__dirname + '/assets'));
+//app.use('/js', app(__dirname + '/assets/js'));
+//app.use('/css', app.static(__dirname + '/assets/css'));
+//app.use(app.static(__dirname + '/assets/js'));
+
+app.use('/css', express.static(__dirname + '/assets/css'));
+app.use('/js', express.static(__dirname + '/assets/js'));
+app.use('/libs', express.static(__dirname + '/assets/libs'));
 
 server.listen(3000);
 

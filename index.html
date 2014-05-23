@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,71 +7,67 @@
     <title>Heartbeat</title>
 
     <!-- Bootstrap -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/libs/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/heartbeat.css" rel="stylesheet" />
 
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io.connect('http://localhost');
-
-        socket.on('heartbeat', function (data) {
-            console.log(data);
-        });
-
-
-        var guid = (function () {
-            function s4() {
-                return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-            }
-
-            return function () {
-                return s4() + s4() + s4() + s4();
-            };
-        })();
-
-        console.log(guid());
-    </script>
-    <style>
-        .title{
-            color:#8A0707;
-            font-size: 1.3em;
-        }
-    </style>
+    <script src="/libs/angular/angular.js"></script>
+    <script src="/libs/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="/js/heartbeat.js"></script>
 </head>
 <body>
 <div class="container">
-    <h1><span class="title">&#x2665;</span>Heartbeat</h1>
+    <h1 class="hero"><span class="title">&#x2665;</span>Heartbeat</h1>
 
-    <h2>Oscillator Type</h2>
-    <div class="btn-group">
-        <button type="button" class="btn btn-default">Sine</button>
-        <button type="button" class="btn btn-default">Square</button>
-        <button type="button" class="btn btn-default">Sawtooth</button>
-        <button type="button" class="btn btn-default">Triangle</button>
+
+    <div ng-controller="SynthCtrl">
+
+
+        <div ng-controller="OscillatorCtrl">
+            <h2>Oscillator Type</h2>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Sine</button>
+                <button type="button" class="btn btn-default">Square</button>
+                <button type="button" class="btn btn-default">Sawtooth</button>
+                <button type="button" class="btn btn-default">Triangle</button>
+            </div>
+        </div>
+
+
+
+        <div ng-controller="FrequencyCtrl">
+            <h2>Frequency</h2>
+            <div class="input-group input-group-lg">
+                <input type="number" class="form-control">
+                <span class="input-group-addon">hertz</span>
+            </div>
+
+
+            <div ng-controller="NoteCtrl">
+                <h2>Notes</h2>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">C</button>
+                    <button type="button" class="btn btn-default">D</button>
+                    <button type="button" class="btn btn-default">E</button>
+                    <button type="button" class="btn btn-default">F</button>
+                    <button type="button" class="btn btn-default">G</button>
+                    <button type="button" class="btn btn-default">A</button>
+                    <button type="button" class="btn btn-default">B</button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
     </div>
 
-    <h2>Frequency</h2>
-    <div class="input-group input-group-lg">
-        <input type="number" class="form-control">
-        <span class="input-group-addon">hertz</span>
-    </div>
-
-    <h2>Notes</h2>
-    <div class="btn-group">
-        <button type="button" class="btn btn-default">C</button>
-        <button type="button" class="btn btn-default">D</button>
-        <button type="button" class="btn btn-default">E</button>
-        <button type="button" class="btn btn-default">F</button>
-        <button type="button" class="btn btn-default">G</button>
-        <button type="button" class="btn btn-default">A</button>
-        <button type="button" class="btn btn-default">B</button>
-    </div>
 
 </div>
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
