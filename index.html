@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="HeartBeat">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,21 +18,20 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="hero"><span class="title">&#x2665;</span>Heartbeat</h1>
+    <h1 class="hero"><span class="title">&#x2665;</span>HeartBeat</h1>
 
 
     <div ng-controller="SynthCtrl">
 
 
+
         <div ng-controller="OscillatorCtrl">
             <h2>Oscillator Type</h2>
             <div class="btn-group">
-                <button type="button" class="btn btn-default">Sine</button>
-                <button type="button" class="btn btn-default">Square</button>
-                <button type="button" class="btn btn-default">Sawtooth</button>
-                <button type="button" class="btn btn-default">Triangle</button>
+                <button type="button" class="btn btn-default" ng-model="$parent.oscillatorModel" ng-repeat="oscillator in oscillators" btn-radio="oscillator.type" uncheckable>{{oscillator.type}}</button>
             </div>
         </div>
+
 
 
 
@@ -44,18 +43,15 @@
             </div>
 
 
+            
+
             <div ng-controller="NoteCtrl">
                 <h2>Notes</h2>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default">C</button>
-                    <button type="button" class="btn btn-default">D</button>
-                    <button type="button" class="btn btn-default">E</button>
-                    <button type="button" class="btn btn-default">F</button>
-                    <button type="button" class="btn btn-default">G</button>
-                    <button type="button" class="btn btn-default">A</button>
-                    <button type="button" class="btn btn-default">B</button>
+                    <label class="btn btn-primary" ng-model="$parent.noteModel" ng-repeat="note in notes" btn-radio="note.name" uncheckable>{{note.name}}</label>
                 </div>
             </div>
+
 
 
         </div>
