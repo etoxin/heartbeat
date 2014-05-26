@@ -21,6 +21,7 @@ angular.module('HeartBeat', ['ui.bootstrap'])
             frequency: 50,
             amountOfoscillators: 3,
             detune: 0.01,
+            gain: -0.7,
             type: 'sawtooth'
         }
 
@@ -32,6 +33,14 @@ angular.module('HeartBeat', ['ui.bootstrap'])
             $rootScope.oscillators[i].connect(synth.destination);
             $rootScope.oscillators[i].start(0);
         }
+
+        // Gain
+        var gainNode = synth.createGainNode();
+        for (var i = 0; i < $rootScope.synthProperties.amountOfoscillators; i++) {
+            $rootScope.oscillators[i].connect(gainNode);
+        }
+        gainNode.connect(synth.destination);
+        gainNode.gain.value = $rootScope.synthProperties.gain;
 
 
         // update the oscillators
