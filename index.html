@@ -38,7 +38,7 @@
         <div ng-controller="FrequencyCtrl">
             <h2>Frequency</h2>
             <div class="input-group input-group-lg">
-                <input type="number" class="form-control" ng-model="frequencyModel">
+                <input type="number" class="form-control" ng-model="frequencyModel" ng-change="changeFreq()">
                 <span class="input-group-addon">hertz</span>
             </div>
 
